@@ -1,0 +1,223 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.banner {
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.751), rgba(0, 0, 0, 0.537)),
+    url(../images/wallhaven-398776.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.content {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.hero {
+  width: 40%;
+}
+
+.content h1 {
+  font-size: 6.5rem;
+}
+
+.content p {
+  color: rgba(240, 248, 255, 0.645);
+  margin: 1.2rem auto;
+  font-weight: 100;
+  font-size: 20px;
+  line-height: 2rem;
+}
+
+.hero-btn {
+  width: 33%;
+  padding: 1rem 0;
+  text-align: center;
+  margin: 1.2rem 0.7rem;
+  border-radius: 1.5rem;
+  font-weight: bold;
+  border: 2px solid #0096877e;
+  background: #039c8d0e;
+  color: #b8cdcb;
+  font-weight: bolder;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+span {
+  background: #0096877e;
+  height: 100%;
+  width: 0;
+  border-radius: 1.5rem;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  transition: 0.5s;
+}
+.hero-btn:hover span {
+  width: 100%;
+}
+
+/* carousel */
+.carousel {
+  width: 35rem;
+  height: 35rem;
+  position: relative;
+}
+
+.carousel > ul {
+  list-style: none;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide > img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+  object-position: center;
+}
+
+.slide[data-active] {
+  opacity: 1;
+  z-index: 1;
+}
+
+.carousel-button {
+  position: absolute;
+  z-index: 2;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  border-radius: 0.25rem;
+  padding: 0 0.5rem;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.carousel-button:hover {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.carousel-button.prev {
+  left: -4rem;
+}
+
+.carousel-button.next {
+  right: -4rem;
+}
+
+#index::after {
+  width: 100%;
+}
+
+@media only screen and (max-width: 1600px) {
+  .hero {
+    width: 35%;
+  }
+
+  .content h1 {
+    font-size: 4.5rem;
+  }
+
+  .content p {
+    color: rgba(240, 248, 255, 0.645);
+    margin: 1.2rem auto;
+    font-weight: 100;
+    font-size: 13px;
+    line-height: 1.3rem;
+  }
+  .carousel {
+    width: 25rem;
+    height: 25rem;
+    position: relative;
+  }
+
+  .hero-btn {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .content {
+    flex-direction: column;
+    position: static;
+    transform: none;
+    gap: 3.5rem;
+  }
+  .hero {
+    width: 60%;
+  }
+  .content h1 {
+    text-align: center;
+    font-size: 4rem;
+  }
+  .carousel {
+    width: 50%;
+    position: relative;
+  }
+  .slide {
+    box-sizing: content-box;
+    padding: 15px;
+  }
+  .hero div {
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .hero {
+    width: 70%;
+  }
+  .content {
+    gap: 4rem;
+    padding-bottom: 5rem;
+  }
+
+  .content h1 {
+    text-align: center;
+    font-size: 3.6rem;
+  }
+
+  .content p {
+    color: rgba(240, 248, 255, 0.645);
+    margin: 1.2rem auto;
+    font-weight: 100;
+    font-size: 18px;
+    line-height: 2rem;
+    text-align: center;
+  }
+  .carousel-button {
+    font-size: 1.3rem;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .hero {
+    width: 90%;
+  }
+}
