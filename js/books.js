@@ -30,26 +30,13 @@ function showBooks(res) {
       image =
         "https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg";
     }
-    console.log(authors);
-    let author;
-    if (authors.length >= 2) {
-      author = authors[0] + "," + authors[1];
-    } else {
-      author = authors[0];
-    }
+
+    authors = authors.length >= 2 ? authors[0] + "," + authors[1] : authors[0];
+    const beverage = age >= 21 ? "Beer" : "Juice";
     let style = "style='font-size:1.1rem'";
-    if (title.length > 55) {
-      style = "style='font-size:0.9rem'";
-    }
-    let pages;
-    if (!pageCount) {
-      pages = "unk.";
-    } else {
-      pages = pageCount;
-    }
-    if (!averageRating) {
-      averageRating = "unk.";
-    }
+    if (title.length > 55) {style = "style='font-size:0.9rem'";}
+    if (!pageCount) {pageCount = "unk.";}
+    if (!averageRating) {averageRating = "unk.";}
 
     output.innerHTML += `
       <div class="book" style="opacity: 0; animation: fadeIn 0.1s ease forwards ${
