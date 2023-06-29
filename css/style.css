@@ -57,7 +57,7 @@
   overflow: hidden;
 }
 
-span {
+.btn-span {
   background: #0096877e;
   height: 100%;
   width: 0;
@@ -68,7 +68,7 @@ span {
   z-index: -1;
   transition: 0.5s;
 }
-.hero-btn:hover span {
+.hero-btn:hover .btn-span {
   width: 100%;
 }
 
@@ -177,13 +177,22 @@ span {
     font-size: 4rem;
   }
   .carousel {
-    width: 50%;
+    width: 20rem;
+    height: 20rem;
     position: relative;
     padding: 10px;
   }
   .slide {
     box-sizing: content-box;
     padding: 15px;
+  }
+
+  .carousel-button.prev {
+    left: -2rem;
+  }
+
+  .carousel-button.next {
+    right: -2rem;
   }
   .hero div {
     text-align: center;
@@ -192,7 +201,7 @@ span {
 
 @media only screen and (max-width: 720px) {
   .hero {
-    width: 70%;
+    width: 90%;
   }
   .content {
     gap: 4rem;
@@ -210,10 +219,14 @@ span {
     font-weight: 100;
     font-size: 18px;
     line-height: 2rem;
-    text-align: center;
+  }
+
+  .carousel {
+    width: 17rem;
+    height: 17rem;
   }
   .carousel-button {
-    font-size: 1.3rem;
+    font-size: 1rem;
   }
 }
 

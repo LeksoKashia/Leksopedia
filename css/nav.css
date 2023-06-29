@@ -4,6 +4,7 @@
   padding: 1rem 0;
   display: flex;
   align-items: center;
+  position: relative;
   justify-content: space-between;
 }
 
@@ -40,7 +41,53 @@
 .navbar ul li:hover::after {
   width: 100%;
 }
-
+#myLinks a:hover {
+  color: rgb(149, 180, 208);
+}
 li.active::after {
   width: 100%;
+}
+
+.burger {
+  position: absolute;
+  gap: 4px;
+}
+.line {
+  width: 30px;
+  height: 0;
+  background-color: #bdd4e0;
+  border-radius: 1px;
+}
+
+#myDiv {
+  color: #009688;
+}
+#myLinks {
+  display: none;
+  list-style: none;
+}
+
+#myLinks a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+  text-align: center;
+}
+
+@media only screen and (max-width: 720px) {
+  .burger {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: relative;
+  }
+
+  .line {
+    height: 4px;
+  }
+  .nav-ul {
+    display: none;
+  }
 }

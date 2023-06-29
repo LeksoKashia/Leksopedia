@@ -15,3 +15,19 @@ buttons.forEach((button) => {
     delete activeSlide.dataset.active;
   });
 });
+
+const paragraph = document.getElementById("paragraph");
+const spanContent = document.getElementById("spanContent");
+const toggleButton = document.querySelector(".hr");
+const buttonText = document.getElementById("buttonText");
+
+toggleButton.addEventListener("click", function () {
+  if (spanContent.style.display === "none") {
+    spanContent.style.display = "inline";
+    buttonText.textContent = "READ LESS";
+  } else {
+    spanContent.style.display = "none";
+    buttonText.textContent = "READ MORE";
+  }
+});
+

@@ -1,12 +1,18 @@
 const apiKey = "AIzaSyCfCKshWZlBTI9C-EYMTlCg8-apQICiQ1A"; // Replace with your actual API key
 const SEARCH_API_Titles = `https://www.googleapis.com/books/v1/volumes?q=`;
 const SEARCH_API_Authors = `https://www.googleapis.com/books/v1/volumes?q=inauthor:`;
+const SEARCH_API_Subject = `https://www.googleapis.com/books/v1/volumes?q=subject:`;
+const SEARCH_API_Publisher = `https://www.googleapis.com/books/v1/volumes?q=inpublisher:`;
 
 const search = document.getElementById("search-box");
 const form = document.querySelector("#form");
 const output = document.querySelector("#output");
 const select = document.querySelector("#select");
+const category = document.querySelector("#category");
+const publisher = document.querySelector("#publisher");
+const res = document.querySelector(".res");
 
+getBooks(SEARCH_API_Subject + "philosophy" + "&maxResults=30");
 async function getBooks(url) {
   try {
     const res = await fetch(url);
@@ -22,7 +28,7 @@ async function getBooks(url) {
 function showBooks(res) {
   output.innerHTML = " ";
   for (let i = 0; i < res.length; i++) {
-    let { title, authors, pageCount, averageRating } = res[i].volumeInfo;
+    let { title, pageCount, averageRating } = res[i].volumeInfo;
     let image = "";
     if (res[i].volumeInfo.hasOwnProperty("imageLinks")) {
       image = res[i].volumeInfo.imageLinks.thumbnail;
@@ -30,13 +36,28 @@ function showBooks(res) {
       image =
         "https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg";
     }
+    let authors = [];
+    if (res[i].volumeInfo.hasOwnProperty("authors")) {
+      authors = res[i].volumeInfo.authors;
+      if (authors.length >= 2) {
+        authors = authors[0] + "," + authors[1];
+      } else {
+        authors = authors[0];
+      }
+    } else {
+      authors = "unknown";
+    }
 
-    authors = authors.length >= 2 ? authors[0] + "," + authors[1] : authors[0];
-    const beverage = age >= 21 ? "Beer" : "Juice";
-    let style = "style='font-size:1.1rem'";
-    if (title.length > 55) {style = "style='font-size:0.9rem'";}
-    if (!pageCount) {pageCount = "unk.";}
-    if (!averageRating) {averageRating = "unk.";}
+    let style = "style='font-size:1rem'";
+    if (title.length > 55) {
+      style = "style='font-size:0.9rem'";
+    }
+    if (!pageCount) {
+      pageCount = "unk.";
+    }
+    if (!averageRating) {
+      averageRating = "unk.";
+    }
 
     output.innerHTML += `
       <div class="book" style="opacity: 0; animation: fadeIn 0.1s ease forwards ${
@@ -52,7 +73,7 @@ function showBooks(res) {
             <p >${authors}</p>
           </div>
           <div class="info2">
-            <span class="pages"><i class="fa-solid fa-book-open" style="color: #53d3b1"></i> ${pages}</span>
+            <span class="pages"><i class="fa-solid fa-book-open" style="color: #53d3b1"></i> ${pageCount}</span>
             <span class="rate"><i class="fa-solid fa-star" style="color: #f2ff00"></i> ${averageRating}</span>
           </div>
         </div>
@@ -78,20 +99,40 @@ select.addEventListener("change", function () {
   }
 });
 
+category.addEventListener("change", function () {
+  const selectedValue = category.value;
+  if (selectedValue != "") {
+    res.textContent = "Category " + selectedValue;
+    publisher.value = publisher.options[0].value;
+    getBooks(SEARCH_API_Subject + selectedValue + "&maxResults=30");
+  }
+});
 
-form.addEventListener("submit", (e) => {
+publisher.addEventListener("change", function () {
+  const selectedValue = publisher.value;
+  if (selectedValue != "") {
+    res.textContent = "Publisher " + selectedValue;
+    category.value = category.options[0].value;
+    getBooks(SEARCH_API_Publisher + selectedValue + "&maxResults=30");
+  }
+});
+
+const icon = document.querySelector(".submit");
+icon.addEventListener("click", (e) => {
   e.preventDefault();
   const searchTerm = search.value;
   const selectTerm = select.value;
   if (searchTerm && searchTerm !== "") {
     if (selectTerm == "Title") {
-      getBooks(SEARCH_API_Titles + searchTerm);
+      res.textContent = "Title " + searchTerm + " Search Results";
+      getBooks(SEARCH_API_Titles + searchTerm + "&maxResults=40");
       search.value = "";
     } else {
+      res.textContent = "Author " + searchTerm + " Search Results";
       getBooks(SEARCH_API_Authors + searchTerm);
       search.value = "";
     }
   } else {
-    window.location.reload;
+    window.location.reload();
   }
 });

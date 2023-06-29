@@ -19,8 +19,8 @@
         <div class="for-select">
           <select id="select">
             <option value="">Choose</option>
-            <option value="Title" id="option-title">Title</option>
-            <option value="Author" id="option-author">Author</option>
+            <option value="Title">Title</option>
+            <option value="Author"">Author</option>
           </select>
         </div>
         <form id="form">
@@ -30,11 +30,33 @@
             id="search-box"
             placeholder="Type..."
           />
-          <input type="submit" id="search" value="Search" />
+          <i class="fa-solid fa-magnifying-glass submit"></i>
+          <!-- <input type="submit" id="search" value="Search" /> -->
         </form>
+        <center><h2 class="or">OR</h2></center>
+        <div class="filter">
+        <select id="category">
+          <option value="">Category</option>
+          <option value="Religion">Religion</option>
+          <option value="Mystery">Mystery</option>
+          <option value="Psychology">Psychology</option>
+          <option value="Science">Science fiction</option>
+          <option value="Romance">Romance</option>
+        </select>
+
+        <select id="publisher">
+          <option value="">Publisher</option>
+          <option value="Harper Collins">Harper Collins</option>
+          <option value="Macmillan">Macmillan</option>
+          <option value="Simon and Schuster">Simon and Schuster</option>
+          <option value="Random House">Random House</option>
+        </select>
+
+      </div>
       </div>
     </section>
 
+    <center><h1 class="res">Category Philosophy</h1></center>
     <div id="output"></div>
 
     <script src="./js/books.js"></script>

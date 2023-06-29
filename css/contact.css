@@ -13,7 +13,13 @@ body {
   display: flex;
   flex-direction: column;
 }
-
+.find {
+  font-size: 45px;
+  padding-bottom: 20px;
+  text-transform: capitalize;
+  font-family: system-ui;
+  color: #e2e9ed;
+}
 .row {
   display: flex;
 }
@@ -55,7 +61,8 @@ body {
 }
 .cont {
   margin-bottom: 12px;
-  font-family: sans-serif;
+  font-family: system-ui;
+  color: #e2e9ed;
 }
 .details {
   width: 100%;
@@ -129,7 +136,7 @@ body {
 /* links */
 .socials {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   padding: 10px;
 }
 
