@@ -148,7 +148,7 @@ body {
 }
 
 .social {
-  font-size: 20px;
+  font-size: 30px;
 }
 
 .social-link:hover > .social {
@@ -166,6 +166,10 @@ body {
   } */
   .cont {
     margin-bottom: 3px;
+  }
+
+  .social {
+    font-size: 25px;
   }
 }
 

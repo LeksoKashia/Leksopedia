@@ -1,5 +1,5 @@
 const apiKey = "AIzaSyCfCKshWZlBTI9C-EYMTlCg8-apQICiQ1A"; // Replace with your actual API key
-const SEARCH_API_Titles = `https://www.googleapis.com/books/v1/volumes?q=`;
+const SEARCH_API_Titles = `https://www.googleapis.com/books/v1/volumes?q=intitle:`;
 const SEARCH_API_Authors = `https://www.googleapis.com/books/v1/volumes?q=inauthor:`;
 const SEARCH_API_Subject = `https://www.googleapis.com/books/v1/volumes?q=subject:`;
 const SEARCH_API_Publisher = `https://www.googleapis.com/books/v1/volumes?q=inpublisher:`;
@@ -11,6 +11,7 @@ const select = document.querySelector("#select");
 const category = document.querySelector("#category");
 const publisher = document.querySelector("#publisher");
 const res = document.querySelector(".res");
+const book_eye = document.querySelector(".book-eye");
 
 getBooks(SEARCH_API_Subject + "philosophy" + "&maxResults=30");
 async function getBooks(url) {
@@ -28,7 +29,7 @@ async function getBooks(url) {
 function showBooks(res) {
   output.innerHTML = " ";
   for (let i = 0; i < res.length; i++) {
-    let { title, pageCount, averageRating } = res[i].volumeInfo;
+    let { title, pageCount, averageRating, infoLink } = res[i].volumeInfo;
     let image = "";
     if (res[i].volumeInfo.hasOwnProperty("imageLinks")) {
       image = res[i].volumeInfo.imageLinks.thumbnail;
@@ -65,12 +66,19 @@ function showBooks(res) {
       }s">
         <div class="image">
           <img src="${image}" alt="" />
-          <a href="" class="eye"><i class="fa-solid fa-eye"></i></a>
+          <div class="hidden-info">
+            <p class="author">${authors}</p>
+            <div class="hidden-links">
+            <a class="eye book-eye" book-index="${i}"><i class="fa-solid fa-eye"></i></a>
+            <a href="${infoLink}" class="eye" target="_blank"><i class="fa-brands fa-google"></i></a>
+
+            </div>
+          </div>
         </div>
         <div class="text">
           <div class="info1">
             <p class="title" ${style}>${title}</p>
-            <p >${authors}</p>
+
           </div>
           <div class="info2">
             <span class="pages"><i class="fa-solid fa-book-open" style="color: #53d3b1"></i> ${pageCount}</span>
@@ -79,6 +87,16 @@ function showBooks(res) {
         </div>
       </div>
     `;
+
+    let book_eye = document.querySelectorAll(".book-eye");
+    book_eye.forEach((eye) => {
+      eye.addEventListener("click", () => {
+        let index = eye.getAttribute("book-index");
+        let bookInfo = res[index];
+        localStorage.setItem("book", JSON.stringify(bookInfo));
+        window.location = "./book.html";
+      });
+    });
   }
 
   const books = document.querySelectorAll(".book");
@@ -118,21 +136,30 @@ publisher.addEventListener("change", function () {
 });
 
 const icon = document.querySelector(".submit");
-icon.addEventListener("click", (e) => {
-  e.preventDefault();
+const performSearch = () => {
   const searchTerm = search.value;
   const selectTerm = select.value;
   if (searchTerm && searchTerm !== "") {
-    if (selectTerm == "Title") {
-      res.textContent = "Title " + searchTerm + " Search Results";
-      getBooks(SEARCH_API_Titles + searchTerm + "&maxResults=40");
+    if (selectTerm == "Author") {
+      res.textContent = "Author " + searchTerm + " Search Results";
+      getBooks(SEARCH_API_Authors + searchTerm + "&maxResults=40");
       search.value = "";
     } else {
-      res.textContent = "Author " + searchTerm + " Search Results";
-      getBooks(SEARCH_API_Authors + searchTerm);
+      res.textContent = "Title " + searchTerm + " Search Results";
+      getBooks(SEARCH_API_Titles + searchTerm + "&maxResults=40");
       search.value = "";
     }
   } else {
     window.location.reload();
   }
+};
+
+icon.addEventListener("click", (e) => {
+  e.preventDefault();
+  performSearch();
+});
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  performSearch();
 });

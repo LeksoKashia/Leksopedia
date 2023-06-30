@@ -31,3 +31,6 @@ toggleButton.addEventListener("click", function () {
   }
 });
 
+document.querySelector(".redirect").onclick = function () {
+  location.href = "books.html";
+};
