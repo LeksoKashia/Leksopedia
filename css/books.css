@@ -79,8 +79,10 @@ body {
 .res {
   padding: 1rem;
   font-size: 40px;
-  color: rgb(221, 228, 235);
   font-family: initial;
+  background: -webkit-linear-gradient(#c9c2c2, #df9d9d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 h1 {
   margin: 0 0 0 0.6rem;

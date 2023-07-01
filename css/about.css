@@ -20,12 +20,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 100px;
 }
 
 .about .contentt img {
   height: auto;
   width: 500px;
   max-width: 100%;
+  opacity: 0.7;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  border-radius: 10px;
+  margin-top: 40px;
 }
 
 .text {
@@ -49,17 +55,27 @@
   font-size: 85px;
   margin-bottom: 20px;
   text-transform: capitalize;
+  background-color: red;
+
+  background-image: linear-gradient(45deg, #f3ec78, #af4261);
+  background-size: 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
 }
 
 .text h5 {
-  color: white;
+  color: rgb(187, 163, 163);
   font-size: 25px;
   margin-bottom: 25px;
   text-transform: capitalize;
   letter-spacing: 2px;
+  font-weight: bolder;
 }
 .text p {
-  color: #c8c4d6;
+  color: #a4a3aa;
   font-size: 18px;
   line-height: 28px;
   letter-spacing: 1px;
@@ -67,9 +83,10 @@
 }
 
 button {
-  background-color: #d3ed5a;
+  background-color: #90d5ec;
+  background-image: linear-gradient(315deg, #90d5ec 0%, #fc575e 74%);
   color: black;
-  border: 2px solid transparent;
+  border: none;
   text-decoration: none;
   padding: 10px 30px;
   font-size: 17px;
@@ -78,27 +95,29 @@ button {
 }
 
 button:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
   background-color: transparent;
-  border: 2px solid #d3ed5a;
-  color: #d3ed5a;
+  border: 2px solid #999f7a;
+  color: #948375;
   transition: 0.8s;
   cursor: pointer;
+  background-image: none;
 }
 
 #about::after {
   width: 100%;
 }
 
-@media screen and (max-width: 1180px) {
-  .about {
-    width: 100%;
-    height: auto;
-    padding: 70px 0px;
+@media screen and (max-width: 1700px) {
+  .about .contentt img {
+    width: 450px;
+  }
+  .main {
+    margin-top: 30px;
   }
 }
 
-@media screen and (max-width: 1180px) {
+@media screen and (max-width: 1050px) {
   .about {
     width: 100%;
     height: auto;
