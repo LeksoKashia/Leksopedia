@@ -45,7 +45,7 @@ $.get(
   "https://www.googleapis.com/youtube/v3/search",
   {
     part: "snippet",
-    q: bookData.book.volumeInfo.title + "book review",
+    q: bookData.book.volumeInfo.title + " book review",
     key: "AIzaSyCfCKshWZlBTI9C-EYMTlCg8-apQICiQ1A",
   },
   function (data) {
