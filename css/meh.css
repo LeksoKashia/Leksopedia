@@ -39,7 +39,7 @@ figure img {
 }
 button {color: black;padding: 5px;}
 button:hover {cursor: pointer;}
-.google {
+.google, .seclude {
   display: block;
   margin-bottom: 30px;
 }
