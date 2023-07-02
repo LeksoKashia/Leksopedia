@@ -3,36 +3,53 @@ const bookData = JSON.parse(book);
 
 const main = document.querySelector(".main");
 
-console.log(bookData.volumeInfo.title);
-const movieDesc = document.createElement("div");
-// movieDesc.classList.add("container");
+console.log(bookData.book.volumeInfo.title);
+const bookDesc = document.createElement("div");
 
-movieDesc.innerHTML = `
-<img src="${bookData.volumeInfo.imageLinks.thumbnail}" >
-<h1> ${bookData.volumeInfo.title}</h1>
-<h2> ${bookData.volumeInfo.authors}</h2>
-<p> ${bookData.volumeInfo.description}</p>
-<p> rating: ${bookData.volumeInfo.averageRating}</p>
-<p> page count: ${bookData.volumeInfo.pageCount}</p>
-<a href="${bookData.volumeInfo.infoLink}"> visit in google</a>
-<br>
-<a href="${bookData.volumeInfo.previewLink}"> start reading</a>
-
+bookDesc.innerHTML = `
+<div class="book">
+<figure>
+  <img
+  src="${bookData.image}"
+    alt=""
+  />
+</figure>
+<div class="text">
+  <h1>${bookData.book.volumeInfo.title}</h1>
+  <div class="info2">
+    <span class="pages"
+      ><i class="fa-solid fa-book-open" style="color: #53d3b1"></i>
+      ${bookData.pageCount}</span
+    >
+    <span class="rate"
+      ><i class="fa-solid fa-star" style="color: #f2ff00"></i> ${bookData.averageRating}</span
+    >
+  </div>
+  <p>Written By: ${bookData.authors}</p>
+  <div class="buttons">
+    <a href="#video-container"><button>Play Review</button></a>
+    <a href="${bookData.book.volumeInfo.previewLink}"><button>Start Reading</button></a>
+  </div>
+  <a href="${bookData.book.volumeInfo.infoLink}" class="google">Visit in google</a>
+  <h3>Description</h3>
+  <p class="desc">
+  ${bookData.book.volumeInfo.description}
+  </p>
+</div>
+</div>
 `;
-main.appendChild(movieDesc);
+
+main.appendChild(bookDesc);
 
 $.get(
   "https://www.googleapis.com/youtube/v3/search",
   {
     part: "snippet",
-    q: bookData.volumeInfo.title + "book review",
+    q: bookData.authors + "'s book" + bookData.book.volumeInfo.title + "review",
     key: "AIzaSyCfCKshWZlBTI9C-EYMTlCg8-apQICiQ1A",
   },
   function (data) {
-    // Extract the first video result
     const videoId = data.items[0].id.videoId;
-
-    // Display the video on your website
     const videoUrl = "https://www.youtube.com/embed/" + videoId;
     $("#video-player").attr("src", videoUrl);
   }

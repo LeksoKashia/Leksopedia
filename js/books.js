@@ -60,6 +60,8 @@ function showBooks(res) {
       averageRating = "unk.";
     }
 
+    localStorage.setItem(`authors${i}`, JSON.stringify(authors));
+
     output.innerHTML += `
       <div class="book" style="opacity: 0; animation: fadeIn 0.1s ease forwards ${
         i * 0.1
@@ -69,7 +71,7 @@ function showBooks(res) {
           <div class="hidden-info">
             <p class="author">${authors}</p>
             <div class="hidden-links">
-            <a class="eye book-eye" book-index="${i}"><i class="fa-solid fa-eye"></i></a>
+            <a class="eye book-eye" book-index="${i}" authors="${authors}" averageRating="${averageRating}" pageCount="${pageCount}" image="${image}"><i class="fa-solid fa-eye"></i></a>
             <a href="${infoLink}" class="eye" target="_blank"><i class="fa-brands fa-google"></i></a>
 
             </div>
@@ -92,7 +94,17 @@ function showBooks(res) {
     book_eye.forEach((eye) => {
       eye.addEventListener("click", () => {
         let index = eye.getAttribute("book-index");
-        let bookInfo = res[index];
+        let authors = eye.getAttribute("authors");
+        let averageRating = eye.getAttribute("averageRating");
+        let pageCount = eye.getAttribute("pageCount");
+        let image = eye.getAttribute("image");
+        let bookInfo = {
+          book: res[index],
+          authors: authors,
+          averageRating: averageRating,
+          pageCount: pageCount,
+          image: image,
+        };
         localStorage.setItem("book", JSON.stringify(bookInfo));
         window.location = "./book.html";
       });
