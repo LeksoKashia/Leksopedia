@@ -179,6 +179,7 @@ img {
   width: 60%;
   text-align: center;
 }
+
 .info2 {
   padding-top: 25px;
   width: 35%;
@@ -234,6 +235,8 @@ img {
   background-color: #e9e3d163;
   cursor: pointer;
 }
+.fa-book-open{color: #53d3b1}
+.fa-star{color: #f2ff00}
 
 .image:hover .author {
   font-size: 1.4rem;
