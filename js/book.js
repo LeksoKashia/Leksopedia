@@ -18,11 +18,11 @@ bookDesc.innerHTML = `
   <h1>${bookData.book.volumeInfo.title}</h1>
   <div class="info2">
     <span class="pages"
-      ><i class="fa-solid fa-book-open" style="color: #53d3b1"></i>
+      ><i class="fa-solid fa-book-open"></i>
       ${bookData.pageCount}</span
     >
     <span class="rate"
-      ><i class="fa-solid fa-star" style="color: #f2ff00"></i> ${bookData.averageRating}</span
+      ><i class="fa-solid fa-star"></i> ${bookData.averageRating}</span
     >
   </div>
   <p>Written By: ${bookData.authors}</p>
@@ -45,7 +45,7 @@ $.get(
   "https://www.googleapis.com/youtube/v3/search",
   {
     part: "snippet",
-    q: bookData.authors + "'s book" + bookData.book.volumeInfo.title + "review",
+    q: bookData.book.volumeInfo.title + "book review",
     key: "AIzaSyCfCKshWZlBTI9C-EYMTlCg8-apQICiQ1A",
   },
   function (data) {

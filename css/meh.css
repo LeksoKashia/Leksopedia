@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+body {
+  padding: 50px;
+  background-color: black;
+}
+.book {
+  display: flex;
+  gap: 40px;
+  padding-bottom: 70px;
+}
+
+figure {
+  width: 350px;
+}
+
+figure img {
+  width: 100%;
+}
+.text {
+  width: 70%;
+}
+.text h1 {
+  font-size: 3rem;
+  padding-bottom: 10px;
+}
+.text p {
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+}
+.info2 {
+  margin-bottom: 20px;
+}
+.buttons {
+  margin-bottom: 5px;
+}
+button {
+  color: black;
+  padding: 5px;
+}
+.google {
+  display: block;
+  margin-bottom: 30px;
+}
+.desc {
+  line-height: 2rem;
+  font-size: 18px;
+}
+#video-container {
+  width: 60%;
+  height: 500px;
+}
+iframe {
+  width: 100%;
+  height: 100%;
+}
+.fa-book-open{color: #53d3b1}
+.fa-star{color: #f2ff00}
+
+@media only screen and (max-width: 1300px) {
+  .book {
+    flex-direction: column;
+    align-items: center;
+  }
+  figure {
+    text-align: center;
+  }
+  .text {
+    text-align: center;
+  }
+  .text h3,
+  .text .desc {
+    text-align: left;
+  }
+}
