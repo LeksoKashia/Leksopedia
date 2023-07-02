@@ -46,7 +46,7 @@ $.get(
   {
     part: "snippet",
     q: bookData.book.volumeInfo.title + " book review",
-    key: "AIzaSyCfCKshWZlBTI9C-EYMTlCg8-apQICiQ1A",
+    key: "AIzaSyBdxwNOKhxwj1B7Rlvcsl5-Y9E6_1nskmw",
   },
   function (data) {
     const videoId = data.items[0].id.videoId;

@@ -1,4 +1,4 @@
-const apiKey = "AIzaSyCfCKshWZlBTI9C-EYMTlCg8-apQICiQ1A"; // Replace with your actual API key
+const apiKey = "AIzaSyBdxwNOKhxwj1B7Rlvcsl5-Y9E6_1nskmw";
 const SEARCH_API_Titles = `https://www.googleapis.com/books/v1/volumes?q=intitle:`;
 const SEARCH_API_Authors = `https://www.googleapis.com/books/v1/volumes?q=inauthor:`;
 const SEARCH_API_Subject = `https://www.googleapis.com/books/v1/volumes?q=subject:`;
