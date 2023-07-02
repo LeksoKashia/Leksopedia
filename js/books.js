@@ -83,8 +83,8 @@ function showBooks(res) {
 
           </div>
           <div class="info2">
-            <span class="pages"><i class="fa-solid fa-book-open" style="color: #53d3b1"></i> ${pageCount}</span>
-            <span class="rate"><i class="fa-solid fa-star" style="color: #f2ff00"></i> ${averageRating}</span>
+            <span class="pages"><i class="fa-solid fa-book-open" ></i> ${pageCount}</span>
+            <span class="rate"><i class="fa-solid fa-star"></i> ${averageRating}</span>
           </div>
         </div>
       </div>
